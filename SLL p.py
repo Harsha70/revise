@@ -1,6 +1,8 @@
 #Singly linked list
 #p.py
 
+#Singly linked list
+
 class Node:
     """docstring for Node"""
     def __init__(self, arg):
@@ -90,12 +92,23 @@ class SLL:
         for x in range(1,n):
             current=current.next
         self.head=current
-        
 
+    def printrecurssivereverse(self,n):
+        current=n
+        if current!=None:
+            self.printrecurssivereverse(current.next)
+            print(current.data)
+
+    def recurssivereverse(self,prev,curr):
+        if curr!=None:
+            self.recurssivereverse(curr,curr.next)
+            curr.next=prev
+        else:
+            self.head=prev
 
 
 s=SLL("2")
-#s.head=Node("1")
+
 s.AtBegining('6')
 s.AtBegining('5')
 s.AtBegining('4')
@@ -106,20 +119,27 @@ s.Atlast('3')
 s.Inbetween(1,"3")
 s.AtBegining('1')
 print('SLL')
-s.listprint()*/1 3 1 2 3 4 5 6 2 3/*
+s.listprint()
 
 s.delete(3)
 print("After Delete")
-s.listprint()/*1 3 1 3 4 5 6 2 3*/
+s.listprint()
 
 s.delete_duplicates()
 print("After delete_duplicates")
-s.listprint()/*1 3 4 5 6 3*/
+s.listprint()
 
 s.reverse()
 print('reverse')
-s.listprint()*/3 6 5 4 3 1/*
+s.listprint()
 
 s.kthtolast(3)
 print('kthtolast')
-s.listprint()/*5 4 3 1*/
+s.listprint()
+
+print('printrecurssivereverse')
+s.printrecurssivereverse(s.head)
+
+print("recurssivereverse")
+s.recurssivereverse(None,s.head)
+s.listprint()
